@@ -1,0 +1,29 @@
+name: Sync Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to Aliyun Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: crpi-4v627lfulndt6g9s.cn-beijing.personal.cr.aliyuncs.com
+          username: $ {{ secrets.LTAI5tGjbtbGbb9i5A3wGTaS }}
+          password: $ {{ secrets.197476Tjq }}
+
+      - name: Build and Push Docker Image
+        run: |
+          skopeo copy docker://coturn/coturn:latest docker://crpi-4v627lfulndt6g9s.cn-beijing.personal.cr.aliyuncs.com/fukang/coturn:latest
+
