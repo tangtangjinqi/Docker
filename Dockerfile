@@ -1,5 +1,5 @@
 # 改用Docker Hub官方Ubuntu 24.04镜像（ACR可直接拉取，无权限问题）
-FROM registry.aliyuncs.com/ubuntu/24.04:latest
+FROM public-registry.cn-hangzhou.aliyuncs.com/library/ubuntu:22.04
 
 # 关键：关闭交互安装（避免ACR构建时tzdata/nginx安装卡住）
 ENV DEBIAN_FRONTEND=noninteractive
