@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM registry.cn-hangzhou.aliyuncs.com/library/ubuntu:24.04
 RUN apt-get update && apt-get install -y nginx
 COPY index.html /var/www/html/
 EXPOSE 80
